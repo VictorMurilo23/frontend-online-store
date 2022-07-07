@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Content extends React.Component {
   constructor() {
@@ -17,6 +18,7 @@ class Content extends React.Component {
             Digite algum termo de pesquisa ou escolha uma categoria.
           </p>)}
         <input placeholder="Pesquisar" />
+        <Link to="/cart" data-testid="shopping-cart-button" />
       </section>
     );
   }
