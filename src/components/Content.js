@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getCategories } from '../services/api';
+import { getQuery, getCategories } from '../services/api';
+import ProductCard from './ProductCard';
 
 class Content extends React.Component {
   constructor() {
@@ -8,6 +9,8 @@ class Content extends React.Component {
     this.state = {
       products: [],
       categories: [],
+      searchInput: '',
+      clicouEmPesquisar: false,
     };
   }
 
@@ -18,15 +21,42 @@ class Content extends React.Component {
     });
   }
 
+  handleInput = ({ target }) => {
+    this.setState({
+      searchInput: target.value,
+    });
+  }
+
+  handleSearchButton = async () => {
+    const { searchInput } = this.state;
+    const results = await getQuery(searchInput);
+    this.setState({ products: results, clicouEmPesquisar: true });
+  }
+
   render() {
-    const { products, categories } = this.state;
+    const { products, categories, clicouEmPesquisar } = this.state;
     return (
       <section>
         {products.length === 0 && (
           <p data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
           </p>)}
-        <input placeholder="Pesquisar" />
+        <input
+          placeholder="Pesquisar"
+          onChange={ this.handleInput }
+          data-testid="query-input"
+        />
+        <button
+          type="button"
+          data-testid="query-button"
+          onClick={ this.handleSearchButton }
+        >
+          Pesquisar
+        </button>
+        { clicouEmPesquisar
+        && products.length === 0 ? <p>Nenhum produto foi encontrado</p> : null}
+        {products.length !== 0 && (products.map((element) => (
+          <ProductCard key={ element.id } data={ element } />)))}
         <Link to="/cart" data-testid="shopping-cart-button">
           <img width="32px" src="https://cdn-icons-png.flaticon.com/512/34/34627.png" alt="button" />
         </Link>
