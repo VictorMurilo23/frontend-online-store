@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getQuery, getCategories } from '../services/api';
+import { getQuery, getCategories, getByCategory } from '../services/api';
 import ProductCard from './ProductCard';
 
 class Content extends React.Component {
@@ -10,7 +10,7 @@ class Content extends React.Component {
       products: [],
       categories: [],
       searchInput: '',
-      clicouEmPesquisar: false,
+      hasSearch: false,
     };
   }
 
@@ -30,11 +30,20 @@ class Content extends React.Component {
   handleSearchButton = async () => {
     const { searchInput } = this.state;
     const results = await getQuery(searchInput);
-    this.setState({ products: results, clicouEmPesquisar: true });
+    this.setState({ products: results, hasSearch: true });
+  }
+
+  handleSearchByCategory = async (categoryName) => {
+    const results = await getByCategory(categoryName);
+    this.setState({ products: results, hasSearch: true });
+  }
+
+  handleCategory = ({ target }) => {
+    this.handleSearchByCategory(target.id);
   }
 
   render() {
-    const { products, categories, clicouEmPesquisar } = this.state;
+    const { products, categories, hasSearch } = this.state;
     return (
       <section>
         {products.length === 0 && (
@@ -53,7 +62,7 @@ class Content extends React.Component {
         >
           Pesquisar
         </button>
-        { clicouEmPesquisar
+        { hasSearch
         && products.length === 0 ? <p>Nenhum produto foi encontrado</p> : null}
         {products.length !== 0 && (products.map((element) => (
           <ProductCard key={ element.id } data={ element } />)))}
@@ -67,6 +76,7 @@ class Content extends React.Component {
               className="categorie-element"
               key={ categorie.id }
               htmlFor={ categorie.id }
+              onChange={ this.handleCategory }
             >
               {categorie.name}
               <input id={ categorie.id } type="radio" name="category-group" />
