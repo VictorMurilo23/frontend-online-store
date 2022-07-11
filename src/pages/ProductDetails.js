@@ -53,23 +53,27 @@ class ProductDetails extends React.Component {
               <Link to="/cart" data-testid="shopping-cart-button">
                 <img width="32px" src="https://cdn-icons-png.flaticon.com/512/34/34627.png" alt="button" />
               </Link>
-              <div className="product-info">
-                <h3 data-testid="product-detail-name">{product.title}</h3>
-                <p>
-                  preço:
-                  {product.price}
-                </p>
+              <div className="details">
+                <div className="product-info">
+                  <h3 data-testid="product-detail-name">{product.title}</h3>
+                  <p>
+                    preço:
+                    {product.price}
+                  </p>
+                </div>
+                <div className="product-thumb">
+                  <img src={ product.thumbnail } alt={ product.title } />
+                </div>
               </div>
-              <div className="product-thumb">
-                <img src={ product.thumbnail } alt={ product.title } />
+              <div className="product-details-button">
+                <button
+                  data-testid="product-detail-add-to-cart"
+                  type="button"
+                  onClick={ this.addProduct }
+                >
+                  Adicionar ao Carrinho
+                </button>
               </div>
-              <button
-                data-testid="product-detail-add-to-cart"
-                type="button"
-                onClick={ this.addProduct }
-              >
-                Adicionar ao Carrinho
-              </button>
             </div>
 
           )}
