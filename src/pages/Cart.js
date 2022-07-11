@@ -1,4 +1,5 @@
 import React from 'react';
+import CartItem from '../components/CartItem';
 
 class Cart extends React.Component {
   constructor() {
@@ -6,6 +7,11 @@ class Cart extends React.Component {
     this.state = {
       cart: [],
     };
+  }
+
+  componentDidMount() {
+    const localStorageItems = JSON.parse(localStorage.getItem('prods'));
+    this.setState({ cart: localStorageItems });
   }
 
   render() {
@@ -17,6 +23,7 @@ class Cart extends React.Component {
             Seu carrinho está vazio
           </p>
         )}
+        {cart.map((item) => <CartItem key={ item.id } data={ item } />)}
       </div>
     );
   }
