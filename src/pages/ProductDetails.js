@@ -35,15 +35,15 @@ class ProductDetails extends React.Component {
       <div>
         {loading ? (<h1> CARREGANDO...</h1>)
           : (
-            <div>
-              <div>
+            <div className="product-details">
+              <div className="product-info">
                 <h3 data-testid="product-detail-name">{product.title}</h3>
                 <p>
                   preço:
                   {product.price}
                 </p>
               </div>
-              <div>
+              <div className="product-thumb">
                 <img src={ product.thumbnail } alt={ product.title } />
               </div>
             </div>
