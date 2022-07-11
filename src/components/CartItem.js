@@ -5,7 +5,7 @@ class CartItem extends React.Component {
   render() {
     const { data: { title, price, thumbnail } } = this.props;
     return (
-      <div>
+      <div className="cartItem">
         <img src={ thumbnail } alt={ title } />
         <p data-testid="shopping-cart-product-name">{title}</p>
         <p>{price}</p>
