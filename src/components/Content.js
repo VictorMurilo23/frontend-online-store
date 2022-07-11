@@ -12,6 +12,7 @@ class Content extends React.Component {
       categories: [],
       searchInput: '',
       hasSearch: false,
+      cartProducts: [],
     };
   }
 
@@ -20,6 +21,11 @@ class Content extends React.Component {
     this.setState({
       categories: response,
     });
+  }
+
+  componentWillUnmount() {
+    const { cartProducts } = this.state;
+    localStorage.setItem('prods', JSON.stringify(cartProducts));
   }
 
   handleInput = ({ target }) => {
@@ -41,6 +47,14 @@ class Content extends React.Component {
 
   handleCategory = ({ target }) => {
     this.handleSearchByCategory(target.id);
+  }
+
+  addProduct = (id) => {
+    const { products } = this.state;
+    const productFind = products.find((item) => item.id === id);
+    this.setState((prevState) => ({
+      cartProducts: [...prevState.cartProducts, productFind],
+    }));
   }
 
   render() {
@@ -92,7 +106,11 @@ class Content extends React.Component {
             { hasSearch
             && products.length === 0 ? <p>Nenhum produto foi encontrado</p> : null}
             {products.length !== 0 && (products.map((element) => (
-              <ProductCard key={ element.id } data={ element } />)))}
+              <ProductCard
+                key={ element.id }
+                addProduct={ this.addProduct }
+                data={ element }
+              />)))}
           </section>
         </main>
       </section>
