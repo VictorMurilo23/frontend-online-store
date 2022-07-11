@@ -9,6 +9,8 @@ class Cart extends React.Component {
     };
   }
 
+  // filter.lenght
+
   componentDidMount() {
     const localStorageItems = JSON.parse(localStorage.getItem('prods'));
     this.setState({ cart: localStorageItems });
