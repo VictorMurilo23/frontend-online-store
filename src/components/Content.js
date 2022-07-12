@@ -23,6 +23,10 @@ class Content extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    console.log('update');
+  }
+
   componentWillUnmount() {
     const { cartProducts } = this.state;
     localStorage.setItem('prods', JSON.stringify(cartProducts));
