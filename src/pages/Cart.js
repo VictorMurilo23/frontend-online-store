@@ -6,6 +6,7 @@ class Cart extends React.Component {
     super();
     this.state = {
       cart: [],
+      uniqueCart: [],
     };
   }
 
@@ -13,22 +14,44 @@ class Cart extends React.Component {
 
   componentDidMount() {
     const localStorageItems = JSON.parse(localStorage.getItem('prods'));
-    this.setState({ cart: localStorageItems });
+    this.setState({ cart: localStorageItems }, () => {
+      this.quantCounter();
+    });
   }
 
-  render() {
-    const { cart } = this.state;
-    return (
-      <div>
-        {cart.length === 0 && (
-          <p data-testid="shopping-cart-empty-message">
-            Seu carrinho está vazio
-          </p>
-        )}
-        {cart.map((item) => <CartItem key={ item.id } data={ item } />)}
-      </div>
-    );
-  }
+    quantCounter = () => {
+      const { cart } = this.state;
+      const itemQuant = cart.reduce((accumulator, current) => {
+        const auxiliar = accumulator.find((element) => element.id === current.id);
+        if (auxiliar === undefined) {
+          current.quant = 1;
+          accumulator.push(current);
+        } else {
+          const elementFound = accumulator.map((element) => element.id)
+            .indexOf(current.id);
+          accumulator[elementFound].quant += 1;
+        }
+        return accumulator;
+      }, []);
+      this.setState({
+        uniqueCart: itemQuant,
+      });
+    };
+
+    render() {
+      const { cart, uniqueCart } = this.state;
+      return (
+        <div>
+          {cart.length === 0 && (
+            <p data-testid="shopping-cart-empty-message">
+              Seu carrinho está vazio
+            </p>
+          )}
+          {/* {cart.map((item) => <CartItem key={ item.id } data={ item } />)} */}
+          {uniqueCart.map((item) => <CartItem key={ item.id } data={ item } />)}
+        </div>
+      );
+    }
 }
 
 export default Cart;
