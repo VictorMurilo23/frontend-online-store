@@ -119,7 +119,6 @@ a {
 
 .details {
   text-align: center;
-  padding: 80px;
 }
 
 .product-details-button {
@@ -129,7 +128,9 @@ a {
 .product-details-button button {
   background-color: #215db0;
   color: white;
+  cursor: pointer;
   text-transform: uppercase;
+  padding: 8px;
   font-weight: 1000;
   font-size: 24px;
   border: none;
@@ -189,4 +190,20 @@ a {
   background-color: transparent;
   border: 1px solid black;
   cursor: pointer;
+}
+
+.header-product-detail {
+  display: flex;
+  background-color: red;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stars-button {
+  background-color: transparent;
+  border: none;
+}
+
+.stars-button, .stars-button img {
+  height: 3em;
 }
