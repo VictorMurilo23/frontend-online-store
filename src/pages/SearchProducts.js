@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getQuery, getCategories, getByCategory } from '../services/api';
-import ProductCard from './ProductCard';
+import ProductCard from '../components/ProductCard';
 import logoProjeto from '../imgs/logo-traybe-projeto-11.png';
+import Categories from '../components/Categories';
 
-class Content extends React.Component {
+class SearchProducts extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -13,18 +14,17 @@ class Content extends React.Component {
       searchInput: '',
       hasSearch: false,
       cartProducts: [],
+      showCategories: true,
     };
   }
 
   async componentDidMount() {
     const response = await getCategories();
+    const cartProductsInLocalStorage = JSON.parse(localStorage.getItem('prods')) || [];
     this.setState({
       categories: response,
+      cartProducts: [...cartProductsInLocalStorage],
     });
-  }
-
-  componentDidUpdate() {
-    console.log('update');
   }
 
   componentWillUnmount() {
@@ -61,8 +61,14 @@ class Content extends React.Component {
     }));
   }
 
+  showOrHideCategories = () => {
+    this.setState((prevState) => ({
+      showCategories: !prevState.showCategories,
+    }));
+  }
+
   render() {
-    const { products, categories, hasSearch } = this.state;
+    const { products, categories, hasSearch, showCategories } = this.state;
     return (
       <section>
         <div className="nav-div">
@@ -88,33 +94,43 @@ class Content extends React.Component {
           </Link>
         </div>
         <main className="main-content">
-          <aside className="categories-aside">
-            {categories.map((categorie) => (
-              <label
-                data-testid="category"
-                className="categorie-element"
-                key={ categorie.id }
-                htmlFor={ categorie.id }
-                onChange={ this.handleCategory }
-              >
-                {categorie.name}
-                <input id={ categorie.id } type="radio" name="category-group" />
-              </label>
-            ))}
-          </aside>
+          <div className="categories-container">
+            {
+              showCategories === true && (
+                <aside className="categories-aside">
+                  <Categories
+                    categories={ categories }
+                    handleCategory={ this.handleCategory }
+                  />
+                </aside>
+              )
+            }
+            <button
+              type="button"
+              onClick={ this.showOrHideCategories }
+            >
+              { showCategories === true ? '<' : '>'}
+            </button>
+          </div>
           <section className="products-section">
-            {products.length === 0 && (
-              <p data-testid="home-initial-message">
-                Digite algum termo de pesquisa ou escolha uma categoria.
-              </p>)}
-            { hasSearch
-            && products.length === 0 ? <p>Nenhum produto foi encontrado</p> : null}
-            {products.length !== 0 && (products.map((element) => (
-              <ProductCard
-                key={ element.id }
-                addProduct={ this.addProduct }
-                data={ element }
-              />)))}
+            {
+              products.length === 0 && (
+                <p data-testid="home-initial-message">
+                  Digite algum termo de pesquisa ou escolha uma categoria.
+                </p>)
+            }
+            {
+              hasSearch
+            && products.length === 0 ? <p>Nenhum produto foi encontrado</p> : null
+            }
+            {
+              products.length !== 0 && (products.map((element) => (
+                <ProductCard
+                  key={ element.id }
+                  addProduct={ this.addProduct }
+                  data={ element }
+                />)))
+            }
           </section>
         </main>
       </section>
@@ -122,4 +138,4 @@ class Content extends React.Component {
   }
 }
 
-export default Content;
+export default SearchProducts;

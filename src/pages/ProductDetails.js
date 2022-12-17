@@ -3,15 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getByProductId } from '../services/api';
 
-/*
-
- Ao clicar "no card" de um produto, a pessoa usuária deve ser direcionada para uma página contendo o nome, uma imagem, o preço e a especificação técnica desse produto. Além disso, essa página deve ter um botão que, ao clicar, a pessoa usuária deve ser redirecionada para a página do carrinho de compras.
-
--> Adicione o atributo data-testid="product-detail-link" no elemento que, ao ser clicado, enviará a pessoa usuária para a página de detalhes do produto. Você deve adicionar esse atributo para todos os produtos;
--> A página de detalhes deve possuir o (nome), a (imagem), o (preço) e qualquer outra informação adicional do produto que você desejar;
--> Adicione o atributo data-testid="product-detail-name" no elemento que, na tela de detalhes, possui o nome do produto.
-*/
-
 class ProductDetails extends React.Component {
   constructor() {
     super();
@@ -24,10 +15,12 @@ class ProductDetails extends React.Component {
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
+    const cartProductsInLocalStorage = JSON.parse(localStorage.getItem('prods')) || [];
     const result = await getByProductId(id);
     this.setState({
       loading: false,
       product: result,
+      cartProducts: [...cartProductsInLocalStorage],
     });
   }
 

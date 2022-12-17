@@ -1,3 +1,10 @@
+* {
+  box-sizing: border-box;
+  font-family: "'Franklin Gothic Medium'" , "'Arial Narrow'" , Arial , sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -17,48 +24,46 @@ a {
 }
 
 .categorie-element{
-  display: block;
-  margin-bottom: 4px;
+  display: flex;
+  flex-direction: row;
 }
 
 .main-content {
+  margin-top: 8px;
   display: flex;
-  padding: 32px 80px;
 }
 
 .product-card-body {
-  width: 200px;
+  width: 13em;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   border: solid 1px #afafaf;
   border-radius: 8px;
   text-align: center;
-  margin: 8px 8px;
-  box-shadow: 0px 5px 10px 3px #afafaf;
+  box-shadow: 2px 3px 8px 0px #afafaf;
 }
 
 .product-card-title {
   background-color: #ec572e;
-  border-radius: 8px 8px 0px 0px ;
+  border-radius: 8px 8px 0px 0px;
   color: white;
   padding: 8px;
-  margin-bottom: 8px;
 }
 
 .product-card-title h4 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin: 0px;
-
 }
 
 .product-card-price {
   background-color: #215db0;
   width: fit-content;
+  margin: auto;
   border-radius: 8px;
   color: white;
-  margin: 16px auto;
   padding: 8px;
-  
 }
 
 .nav-div {
@@ -66,7 +71,7 @@ a {
   padding: 8px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .logo {
@@ -77,9 +82,8 @@ a {
 .search-div input{
   padding: 8px 16px;
   border: none;
-  width: 300px;
+  width: 15em;
   border-radius: 100px;
-  margin-right: 8px;
 }
 
 .search-div button{
@@ -92,13 +96,22 @@ a {
 }
 
 .products-section {
+  margin-top: 8px;
+  margin-bottom: 16px;
   flex-shrink: 9999;
+  gap: 12px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .categories-aside {
-  width: 235px;
+  width: 10em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 3px;
+  margin-bottom: 12px;
 }
 
 .product-details {
@@ -148,5 +161,32 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
 
+.product-card-image {
+  height: 7em;
+}
+
+.add-to-cart-button {
+  margin-bottom: 7px;
+  width: 70%;
+  height: 2em;
+  cursor: pointer;
+  align-self: center;
+}
+
+.categories-container {
+  display: flex;
+  margin-right: 5px;
+}
+
+.categories-container button {
+  height: 2em;
+  right: 0em;
+  padding: 4px;
+  font-size: 1rem;
+  margin-left: 3px;
+  background-color: transparent;
+  border: 1px solid black;
+  cursor: pointer;
 }

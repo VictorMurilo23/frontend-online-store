@@ -13,13 +13,14 @@ class ProductCard extends React.Component {
             <h4>{title}</h4>
           </div>
           <div className="product-card-info">
-            <img src={ thumbnail } alt={ title } />
+            <img src={ thumbnail } alt={ title } className="product-card-image" />
             <p className="product-card-price">{`R$ ${price}`}</p>
           </div>
         </Link>
         <button
           data-testid="product-add-to-cart"
           type="button"
+          className="add-to-cart-button"
           onClick={ () => addProduct(id) }
         >
           Adicionar ao Carrinho
@@ -34,7 +35,7 @@ ProductCard.propTypes = {
     title: PropTypes.string,
     price: PropTypes.number,
     thumbnail: PropTypes.string,
-    id: PropTypes.number,
+    id: PropTypes.string,
   }).isRequired,
   addProduct: PropTypes.func.isRequired,
 };

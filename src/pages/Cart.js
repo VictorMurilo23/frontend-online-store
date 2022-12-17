@@ -10,8 +10,6 @@ class Cart extends React.Component {
     };
   }
 
-  // filter.lenght
-
   componentDidMount() {
     const localStorageItems = JSON.parse(localStorage.getItem('prods'));
     this.setState({ cart: localStorageItems }, () => {
@@ -47,7 +45,6 @@ class Cart extends React.Component {
               Seu carrinho está vazio
             </p>
           )}
-          {/* {cart.map((item) => <CartItem key={ item.id } data={ item } />)} */}
           {uniqueCart.map((item) => <CartItem key={ item.id } data={ item } />)}
         </div>
       );
