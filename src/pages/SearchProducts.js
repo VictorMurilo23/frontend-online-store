@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { getQuery, getCategories, getByCategory } from '../services/api';
 import ProductCard from '../components/ProductCard';
-import logoProjeto from '../imgs/logo-traybe-projeto-11.png';
 import Categories from '../components/Categories';
-import CartIcon from '../components/CartIcon';
+import Header from '../components/Header';
 
 class SearchProducts extends React.Component {
   constructor() {
@@ -72,28 +70,12 @@ class SearchProducts extends React.Component {
     const { products, categories, hasSearch, showCategories, cartProducts } = this.state;
     return (
       <section>
-        <div className="nav-div">
-          <div>
-            <img className="logo" src={ logoProjeto } alt="logo" />
-          </div>
-          <div className="search-div">
-            <input
-              placeholder="Pesquisar"
-              onChange={ this.handleInput }
-              data-testid="query-input"
-            />
-            <button
-              type="button"
-              data-testid="query-button"
-              onClick={ this.handleSearchButton }
-            >
-              P
-            </button>
-          </div>
-          <Link to="/cart" data-testid="shopping-cart-button">
-            <CartIcon cartItems={ cartProducts } />
-          </Link>
-        </div>
+        <Header
+          cartProducts={ cartProducts }
+          showSearchBar
+          handleInput={ this.handleInput }
+          handleSearchButton={ this.handleSearchButton }
+        />
         <main className="main-content">
           <div className="categories-container">
             {

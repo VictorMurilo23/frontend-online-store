@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getByProductId } from '../services/api';
-import ProductDetailsHeader from '../components/ProductDetailsHeader';
+import Header from '../components/Header';
 import AvaliationForm from '../components/AvaliationForm';
 import Avaliations from '../components/Avaliations';
 
@@ -70,7 +70,7 @@ class ProductDetails extends React.Component {
     }
     return (
       <div>
-        <ProductDetailsHeader cartProducts={ cartProducts } />
+        <Header cartProducts={ cartProducts } />
         <div className="product-details">
           <div className="details">
             <div className="product-info">
