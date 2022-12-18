@@ -13,6 +13,7 @@ class SearchProducts extends React.Component {
       searchInput: '',
       hasSearch: false,
       cartProducts: [],
+      loading: false,
       showCategories: true,
     };
   }
@@ -39,13 +40,15 @@ class SearchProducts extends React.Component {
 
   handleSearchButton = async () => {
     const { searchInput } = this.state;
+    this.setState({ loading: true });
     const results = await getQuery(searchInput);
-    this.setState({ products: results, hasSearch: true });
+    this.setState({ products: results, hasSearch: true, loading: false });
   }
 
   handleSearchByCategory = async (categoryName) => {
+    this.setState({ loading: true });
     const results = await getByCategory(categoryName);
-    this.setState({ products: results, hasSearch: true });
+    this.setState({ products: results, hasSearch: true, loading: false });
   }
 
   handleCategory = ({ target }) => {
@@ -67,7 +70,8 @@ class SearchProducts extends React.Component {
   }
 
   render() {
-    const { products, categories, hasSearch, showCategories, cartProducts } = this.state;
+    const { products, categories, hasSearch,
+      showCategories, cartProducts, loading } = this.state;
     return (
       <section>
         <Header
@@ -97,10 +101,18 @@ class SearchProducts extends React.Component {
           </div>
           <section className="products-section">
             {
-              products.length === 0 && (
-                <p data-testid="home-initial-message">
+              loading && (
+                <div className="loading-products">
+                  <h1 className="loading">CARREGANDO...</h1>
+                </div>
+              )
+            }
+            {
+              hasSearch === false && (
+                <span data-testid="home-initial-message">
                   Digite algum termo de pesquisa ou escolha uma categoria.
-                </p>)
+                </span>
+              )
             }
             {
               hasSearch

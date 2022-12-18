@@ -35,10 +35,10 @@ a {
 
 .product-card-body {
   position: relative;
-  width: 13em;
+  width: 10em;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   border: solid 1px #afafaf;
   border-radius: 8px;
   text-align: center;
@@ -98,9 +98,10 @@ a {
 
 .products-section {
   margin-top: 8px;
+  position: relative;
   margin-bottom: 16px;
   flex-shrink: 9999;
-  gap: 12px;
+  gap: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -138,14 +139,13 @@ a {
   border-radius: 8px;
 }
 
-.product-thumb{
-  width: 400px;
-  margin: auto;
+.product-thumb {
+  display: flex;
 }
 
 
-.product-thumb img{
-  width: 400px;
+.product-thumb img {
+  width: 20em;
 }
 
 .cartItem {
@@ -172,7 +172,7 @@ a {
 .add-to-cart-button {
   margin-bottom: 7px;
   width: 70%;
-  height: 2em;
+  height: 2.5em;
   cursor: pointer;
   align-self: center;
 }
@@ -211,11 +211,36 @@ a {
 
 .free-shipping-container {
   position: absolute;
-  right: 0em;
-  bottom: 14%;
+  right: 0.4em;
+  bottom: 16%;
 }
 
 .free-shipping-container span {
-font-size: .8rem;
+  font-size: .9rem;
 }
 
+.cart-icon-container {
+  position: relative;
+}
+
+.cart-icon-container span {
+  position: absolute;
+  left: 0em;
+  bottom: -.7em;
+  color: white;
+  font-weight: 700;
+}
+
+.loading {
+  text-align: center;
+}
+
+.loading-products {
+  background-color: white;
+  z-index: 999;
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  top: -16px;
+  bottom: -26px;
+}

@@ -66,7 +66,7 @@ class ProductDetails extends React.Component {
   render() {
     const { loading, product, productAvaliations, cartProducts } = this.state;
     if (loading) {
-      return (<h1> CARREGANDO...</h1>);
+      return (<h1 className="loading"> CARREGANDO...</h1>);
     }
     return (
       <div>
@@ -81,7 +81,7 @@ class ProductDetails extends React.Component {
               </p>
             </div>
             <div className="product-thumb">
-              <img src={ product.thumbnail } alt={ product.title } />
+              <img src={ product.pictures[0].url } alt={ product.title } />
             </div>
           </div>
           {

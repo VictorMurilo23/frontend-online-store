@@ -30,9 +30,9 @@ export default class CartIcon extends Component {
 
   render() {
     return (
-      <div className="teste">
+      <div className="cart-icon-container">
         <img width="32px" src="https://cdn-icons-png.flaticon.com/512/34/34627.png" alt="button" />
-        <p data-testid="shopping-cart-size">{ this.cartQuantItems() }</p>
+        <span data-testid="shopping-cart-size">{ this.cartQuantItems() }</span>
       </div>
     );
   }
