@@ -34,6 +34,7 @@ a {
 }
 
 .product-card-body {
+  position: relative;
   width: 13em;
   display: flex;
   flex-direction: column;
@@ -207,3 +208,14 @@ a {
 .stars-button, .stars-button img {
   height: 3em;
 }
+
+.free-shipping-container {
+  position: absolute;
+  right: 0em;
+  bottom: 14%;
+}
+
+.free-shipping-container span {
+font-size: .8rem;
+}
+

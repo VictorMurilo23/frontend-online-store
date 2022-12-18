@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 
 class ProductCard extends React.Component {
   render() {
-    const { data: { title, thumbnail, price, id } } = this.props;
+    const { data: { title, thumbnail, price, id, shipping } } = this.props;
     const { addProduct } = this.props;
     return (
       <div className="product-card-body" data-testid="product">
+        {
+          shipping.free_shipping === true && (
+            <div className="free-shipping-container">
+              <span data-testid="free-shipping">Frete Gratis</span>
+            </div>
+          )
+        }
         <Link data-testid="product-detail-link" to={ `/ProductDetails/${id}` }>
           <div className="product-card-title">
             <h4>{title}</h4>
@@ -36,6 +43,9 @@ ProductCard.propTypes = {
     price: PropTypes.number,
     thumbnail: PropTypes.string,
     id: PropTypes.string,
+    shipping: PropTypes.shape({
+      free_shipping: PropTypes.bool,
+    }),
   }).isRequired,
   addProduct: PropTypes.func.isRequired,
 };

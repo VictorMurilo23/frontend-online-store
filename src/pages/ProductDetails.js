@@ -84,6 +84,13 @@ class ProductDetails extends React.Component {
               <img src={ product.thumbnail } alt={ product.title } />
             </div>
           </div>
+          {
+            product.shipping.free_shipping === true && (
+              <div>
+                <span data-testid="free-shipping">Frete Gratis</span>
+              </div>
+            )
+          }
           <div className="product-details-button">
             <button
               data-testid="product-detail-add-to-cart"
