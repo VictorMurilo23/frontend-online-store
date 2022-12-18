@@ -22,10 +22,10 @@ class ProductDetails extends React.Component {
     const avaliations = this.getProductAvaliations(id);
     const result = await getByProductId(id);
     this.setState({
-      loading: false,
       product: result,
       cartProducts: [...cartProductsInLocalStorage],
       productAvaliations: avaliations,
+      loading: false,
     });
   }
 
@@ -64,13 +64,13 @@ class ProductDetails extends React.Component {
   }
 
   render() {
-    const { loading, product, productAvaliations } = this.state;
+    const { loading, product, productAvaliations, cartProducts } = this.state;
     if (loading) {
       return (<h1> CARREGANDO...</h1>);
     }
     return (
       <div>
-        <ProductDetailsHeader />
+        <ProductDetailsHeader cartProducts={ cartProducts } />
         <div className="product-details">
           <div className="details">
             <div className="product-info">

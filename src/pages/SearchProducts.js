@@ -4,6 +4,7 @@ import { getQuery, getCategories, getByCategory } from '../services/api';
 import ProductCard from '../components/ProductCard';
 import logoProjeto from '../imgs/logo-traybe-projeto-11.png';
 import Categories from '../components/Categories';
+import CartIcon from '../components/CartIcon';
 
 class SearchProducts extends React.Component {
   constructor() {
@@ -68,7 +69,7 @@ class SearchProducts extends React.Component {
   }
 
   render() {
-    const { products, categories, hasSearch, showCategories } = this.state;
+    const { products, categories, hasSearch, showCategories, cartProducts } = this.state;
     return (
       <section>
         <div className="nav-div">
@@ -90,7 +91,7 @@ class SearchProducts extends React.Component {
             </button>
           </div>
           <Link to="/cart" data-testid="shopping-cart-button">
-            <img width="32px" src="https://cdn-icons-png.flaticon.com/512/34/34627.png" alt="button" />
+            <CartIcon cartItems={ cartProducts } />
           </Link>
         </div>
         <main className="main-content">

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import logoProjeto from '../imgs/logo-traybe-projeto-11.png';
+import CartIcon from './CartIcon';
 
 export default class ProductDetailsHeader extends Component {
   render() {
+    const { cartProducts } = this.props;
     return (
       <div className="nav-div">
         <div>
@@ -12,9 +15,13 @@ export default class ProductDetailsHeader extends Component {
           </Link>
         </div>
         <Link to="/cart" data-testid="shopping-cart-button">
-          <img width="32px" src="https://cdn-icons-png.flaticon.com/512/34/34627.png" alt="button" />
+          <CartIcon cartItems={ cartProducts } />
         </Link>
       </div>
     );
   }
 }
+
+ProductDetailsHeader.propTypes = {
+  cartProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
