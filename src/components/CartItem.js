@@ -11,9 +11,13 @@ class CartItem extends React.Component {
   }
 
   increaseQuant = () => {
-    this.setState((prevState) => ({
-      quantity: prevState.quantity + 1,
-    }));
+    const { data } = this.props;
+    const { quantity } = this.state;
+    if (quantity < data.available_quantity) {
+      this.setState((prevState) => ({
+        quantity: prevState.quantity + 1,
+      }));
+    }
   }
 
   decreaseQuant = () => {
@@ -60,6 +64,7 @@ CartItem.propTypes = {
     price: PropTypes.number,
     thumbnail: PropTypes.string,
     quant: PropTypes.number,
+    available_quantity: PropTypes.number,
   }).isRequired,
 };
 

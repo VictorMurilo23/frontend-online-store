@@ -15,7 +15,10 @@ export default class CartIcon extends Component {
       } else {
         const elementFound = accumulator.map((element) => element.id)
           .indexOf(current.id);
-        accumulator[elementFound].quant += 1;
+        if (accumulator[elementFound].quant
+          < accumulator[elementFound].available_quantity) {
+          accumulator[elementFound].quant += 1;
+        }
       }
       return accumulator;
     }, []);
