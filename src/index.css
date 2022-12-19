@@ -115,12 +115,20 @@ a {
   padding-left: 3px;
   margin-bottom: 12px;
 }
-/* 
+
 .product-details {
-} */
+  display: flex;
+  /* position: relative; */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 
 .details {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .product-details-button {
@@ -128,6 +136,7 @@ a {
 }
 
 .product-details-button button {
+  width: 10em;
   background-color: #215db0;
   color: white;
   cursor: pointer;
@@ -141,11 +150,14 @@ a {
 
 .product-thumb {
   display: flex;
+  /* align-self: center; */
+  /* margin-left: 32px; */
 }
 
 
 .product-thumb img {
-  width: 20em;
+  width: 18em;
+  height: 25em;
 }
 
 .cartItem {
@@ -201,12 +213,13 @@ a {
 }
 
 .stars-button {
+  cursor: pointer;
   background-color: transparent;
   border: none;
 }
 
 .stars-button, .stars-button img {
-  height: 3em;
+  height: 3.5em;
 }
 
 .free-shipping-container {
@@ -243,4 +256,76 @@ a {
   height: 110%;
   top: -16px;
   bottom: -26px;
+}
+
+.product-info {
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+
+.product-info p {
+  color: #ec572e;
+}
+
+.avaliations-container {
+  margin-bottom: 18px;
+  margin-top: 22px;
+  gap: 12px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.users-avaliations-container {
+  margin-top: 12px;
+  gap: 12px;
+  flex-direction: column;
+  display: flex;
+}
+
+.avaliation-card {
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 8px;
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20em;
+  word-break: break-all;
+}
+
+.user-avaliation-email-container p {
+  font-size: .9rem;
+}
+
+.user-avaliation-message-container p {
+  font-size: 1.2rem;
+}
+
+.avaliation-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.avaliation-form-input {
+  height: 2.5em;
+  width: 20em;
+  padding: 5px;
+}
+
+.avaliation-form-input:focus {
+  outline: none;
+}
+
+.submit-avaliation-button {
+  height: 2em;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 7.5em;
 }

@@ -76,21 +76,22 @@ class ProductDetails extends React.Component {
             <div className="product-info">
               <h3 data-testid="product-detail-name">{product.title}</h3>
               <p>
-                preço:
+                R$
+                {' '}
                 {product.price}
               </p>
+              {
+                product.shipping.free_shipping === true && (
+                  <div>
+                    <span data-testid="free-shipping">Frete Gratis</span>
+                  </div>
+                )
+              }
             </div>
             <div className="product-thumb">
               <img src={ product.pictures[0].url } alt={ product.title } />
             </div>
           </div>
-          {
-            product.shipping.free_shipping === true && (
-              <div>
-                <span data-testid="free-shipping">Frete Gratis</span>
-              </div>
-            )
-          }
           <div className="product-details-button">
             <button
               data-testid="product-detail-add-to-cart"
@@ -101,12 +102,12 @@ class ProductDetails extends React.Component {
             </button>
           </div>
         </div>
-        <div>
-          <h2>Avaliações</h2>
-          <div>
+        <div className="avaliations-container">
+          <div className="avaliation-form-container">
             <AvaliationForm saveAvaliation={ this.saveAvaliation } />
           </div>
-          <div>
+          <h2>Avaliações</h2>
+          <div className="users-avaliations-container">
             <Avaliations productAvaliations={ productAvaliations } />
           </div>
         </div>

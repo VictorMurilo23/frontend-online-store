@@ -51,14 +51,28 @@ export default class AvaliationForm extends Component {
     const { message, email, starCount } = this.state;
     return (
       <>
-        <input
-          type="text"
-          name="email"
-          value={ email }
-          onChange={ this.handleChange }
-          placeholder="Email"
-          data-testid="product-detail-email"
-        />
+        <div>
+          <input
+            type="text"
+            className="avaliation-form-input"
+            name="email"
+            value={ email }
+            onChange={ this.handleChange }
+            placeholder="Email"
+            data-testid="product-detail-email"
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            className="avaliation-form-input"
+            name="message"
+            value={ message }
+            onChange={ this.handleChange }
+            placeholder="Mensagem (opcional)"
+            data-testid="product-detail-evaluation"
+          />
+        </div>
         <div>
           {
             stars.map((number) => (
@@ -78,19 +92,10 @@ export default class AvaliationForm extends Component {
           }
         </div>
         <div>
-          <input
-            type="text"
-            name="message"
-            value={ message }
-            onChange={ this.handleChange }
-            placeholder="Mensagem (opcional)"
-            data-testid="product-detail-evaluation"
-          />
-        </div>
-        <div>
           <button
             type="button"
             data-testid="submit-review-btn"
+            className="submit-avaliation-button"
             onClick={ this.submitAvaliation }
           >
             Avaliar

@@ -11,23 +11,30 @@ export default class Avaliations extends Component {
       <>
         {
           productAvaliations.map((avaliation, index) => (
-            <div key={ `Avaliação ${index}` }>
-              <p>
-                { avaliation.message }
-              </p>
-              <p>
-                { avaliation.email }
-              </p>
-              {
-                stars.map((number) => (
-                  <img
-                    className="stars-button"
-                    key={ `Avaliação ${index}, estrela ${number}` }
-                    src={ avaliation.starCount >= Number(number) ? blackStar : blankStar }
-                    alt={ `Estrela ${number}` }
-                  />
-                ))
-              }
+            <div key={ `Avaliação ${index}` } className="avaliation-card">
+              <div className="user-avaliation-stars-container">
+                {
+                  stars.map((number) => (
+                    <img
+                      className="stars-button"
+                      key={ `Avaliação ${index}, estrela ${number}` }
+                      src={ avaliation
+                        .starCount >= Number(number) ? blackStar : blankStar }
+                      alt={ `Estrela ${number}` }
+                    />
+                  ))
+                }
+              </div>
+              <div className="user-avaliation-message-container">
+                <p>
+                  { avaliation.message }
+                </p>
+              </div>
+              <div className="user-avaliation-email-container">
+                <p>
+                  { avaliation.email }
+                </p>
+              </div>
             </div>
           ))
         }
