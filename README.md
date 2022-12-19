@@ -1,13 +1,20 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Frontend Online Store
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+## Introdução
+Um projeto que simula uma loja usando a api do mercado livre.
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+Esse projeto foi feito em grupo com [Helder Daniel](https://github.com/helderdsa), [Rafael Almeida](https://github.com/RafaelFAlm), [Silmar Lessa](https://github.com/SilmarLessa), [Diego Mello](https://github.com/diegomello).
+
+O projeto todo, menos a parte do css, foi feito em pair programming, todos os integrantes do grupo contribuíram para o funcionamento da lógica da aplicação.
+
+Eu e o Helder fizemos a parte do css, ele que teve a idéia de fazer um estilo baseado no site Kabum.
+
+## Funcionamento
+O funcionamento é bem simples, é so selecionar uma categoria ou fazer uma busca que os itens irão aparecer. Esses itens podem ser adicionados ao carrinho.
+
+## Link da aplicação
+https://frontend-online-store-red.vercel.app/
+
+## Imagem da aplicação
+![Kapow](image/kapow.png)
+
