@@ -36,23 +36,32 @@ class CartItem extends React.Component {
       <div className="cartItem">
         <img src={ thumbnail } alt={ title } />
         <p data-testid="shopping-cart-product-name">{title}</p>
-        <p>{price}</p>
-        <button
-          type="button"
-          data-testid="product-increase-quantity"
-          onClick={ this.increaseQuant }
-        >
-          +
-        </button>
-        <p data-testid="shopping-cart-product-quantity">{quantity}</p>
-        <button
-          type="button"
-          data-testid="product-decrease-quantity"
-          onClick={ this.decreaseQuant }
-        >
-          -
-
-        </button>
+        <p>
+          R$
+          {' '}
+          {
+            (price * quantity).toFixed(2)
+          }
+        </p>
+        <div className="item-quantity-container">
+          <button
+            type="button"
+            className="quantity-button"
+            data-testid="product-decrease-quantity"
+            onClick={ this.decreaseQuant }
+          >
+            -
+          </button>
+          <p data-testid="shopping-cart-product-quantity">{quantity}</p>
+          <button
+            type="button"
+            data-testid="product-increase-quantity"
+            className="quantity-button"
+            onClick={ this.increaseQuant }
+          >
+            +
+          </button>
+        </div>
       </div>
     );
   }

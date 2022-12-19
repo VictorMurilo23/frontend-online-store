@@ -27,6 +27,11 @@ class SearchProducts extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    const { cartProducts } = this.state;
+    localStorage.setItem('prods', JSON.stringify(cartProducts));
+  }
+
   componentWillUnmount() {
     const { cartProducts } = this.state;
     localStorage.setItem('prods', JSON.stringify(cartProducts));

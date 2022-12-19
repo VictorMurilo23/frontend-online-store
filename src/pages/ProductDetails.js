@@ -29,6 +29,11 @@ class ProductDetails extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    const { cartProducts } = this.state;
+    localStorage.setItem('prods', JSON.stringify(cartProducts));
+  }
+
   componentWillUnmount() {
     const { cartProducts, productAvaliations } = this.state;
     const { match: { params: { id } } } = this.props;

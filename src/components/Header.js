@@ -3,10 +3,26 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import logoProjeto from '../imgs/logo-traybe-projeto-11.png';
 import CartIcon from './CartIcon';
+import Cart from './Cart';
 
 export default class Header extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      showCart: false,
+    };
+  }
+
+  handleShowCart = () => {
+    this.setState((prevState) => ({
+      showCart: !prevState.showCart,
+    }));
+  }
+
   render() {
     const { cartProducts, showSearchBar, handleInput, handleSearchButton } = this.props;
+    const { showCart } = this.state;
     return (
       <div className="nav-div">
         <div>
@@ -32,9 +48,14 @@ export default class Header extends Component {
             </div>
           )
         }
-        <Link to="/cart" data-testid="shopping-cart-button">
-          <CartIcon cartItems={ cartProducts } />
-        </Link>
+        <div className="cart">
+          <CartIcon cartItems={ cartProducts } handleShowCart={ this.handleShowCart } />
+          {
+            showCart === true && (
+              <Cart />
+            )
+          }
+        </div>
       </div>
     );
   }

@@ -29,15 +29,21 @@ export default class CartIcon extends Component {
   };
 
   render() {
+    const { handleShowCart } = this.props;
     return (
-      <div className="cart-icon-container">
+      <button
+        type="button"
+        className="cart-icon-container"
+        onClick={ handleShowCart }
+      >
         <img width="32px" src="https://cdn-icons-png.flaticon.com/512/34/34627.png" alt="button" />
         <span data-testid="shopping-cart-size">{ this.cartQuantItems() }</span>
-      </div>
+      </button>
     );
   }
 }
 
 CartIcon.propTypes = {
   cartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleShowCart: PropTypes.func.isRequired,
 };
